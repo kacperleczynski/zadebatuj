@@ -1,0 +1,54 @@
+
+{% extends "ksm_app/base.html" %}
+{% block body_block %}
+{% load has_group %}
+<style media="screen">
+  #jumbotron1{
+    background-color: #212830;
+    color: white;
+  }
+  #central{
+    background-color: #5caad1;
+    color: white;
+    text-align: center;
+  }
+  h1{
+    font-size:80px;
+  }
+</style>
+
+
+
+<div id=central class="jumbotron">
+  <h1>Lista debat</h1>
+<div class="container">
+{% for battle in battles %}
+  <div id=jumbotron1 class="jumbotron">
+
+      <h3>Data:{{battle.data}}</h3>
+      <h3>Godzina: {{battle.godzina}}</h3>
+      <h5>{{battle.user1}} VS {{battle.user2}}</h5>
+      {% if battle.transmisja %}
+        <h5><a href="{{ battle.transmisja }}">Transmisja Live</a></h5>
+      {% else %}
+        <h5>Link pojawi się jak transmisja bedzie live</h5>
+      {% endif %}
+      <h5>Sędziuje: {{battle.judge}}</h5>
+
+    {% if request.user|has_group:"judges" %}
+      <a id='bt' class="btn btn-outline-info" href="{% url 'ksm_app:updateBattle' battle.id %}" role="button">Edytuj</a>
+      <a id='bt' class="btn btn-outline-info" href="{% url 'ksm_app:deleteBattle' battle.id %}" role="button">Usuń</a>
+    {% else %}
+    {% endif %}
+  </div>
+{% endfor %}
+
+</div>
+{% if request.user|has_group:"judges" %}
+  <a id='bt' class="btn btn-light" href="{% url 'ksm_app:battle' %}" role="button">Utwórz debate</a>
+{% else %}
+{% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "ksm_app/base.html" %}
+{% block body_block %}
+<style media="screen">
+  #jumbotron1{
+    background-color: #212830;
+    color: white;
+  }
+  #central{
+    background-color: #5caad1;
+    color: white;
+    text-align: center;
+  }
+  h1{
+    font-size:80px;
+  }
+</style>
+
+<div id=central class="jumbotron">
+  {% if registered %}
+  <div class="container">
+    <div id=jumbotron1 class="jumbotron">
+    <h1>Dziękujemy za rejestracje</h1>
+    <h3>Teraz możesz się zalogować</h3>
+    <a id='bt' class="btn btn-success" href="{% url 'ksm_app:user_login' %}" role="button">Zaloguj</a>
+
+  {% else %}
+    <h1>Zarejestruj się jako sędzia</h1>
+  <div class="container">
+    <div id=jumbotron1 class="jumbotron">
+
+      <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ judges_form.as_p }}
+        <button type="submit" class="btn btn-outline-info">Zarejestruj</button>
+      </form>
+    {% endif %}
+  </div>
+    </div>
+  </div>
+
+
+{% endblock %}

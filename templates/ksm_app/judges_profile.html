@@ -1,0 +1,45 @@
+{% extends "ksm_app/base.html" %}
+{% block body_block %}
+<style media="screen">
+  #jumbotron1{
+    background-color: #212830;
+    color: white;
+    font-size: 35px;
+  }
+  #central{
+    background-color: #5caad1;
+    color: white;
+    text-align: center;
+  }
+  h1{
+    font-size:80px;
+  }
+
+
+.white-text{
+  color: white;
+}
+.yellow-color{
+  color: #e8e37d;
+}
+</style>
+<div id=central class="jumbotron">
+  <div class="container">
+      <h1>Twój profil</h1>
+      <div id=jumbotron1 class="jumbotron">
+        <span class="white-text">Imię:</span><span class="yellow-color">{{user.judges.imię}}</span><br>
+        <span class="white-text">Nazwisko:</span><span class="yellow-color">{{user.judges.nazwisko}}</span><br>
+        <span class="white-text">Email:</span><span class="yellow-color">{{user.judges.email}}</span><br>
+        <span class="white-text">Miasto:</span><span class="yellow-color">{{user.judges.miasto}}</span><br>
+        <span class="white-text">Szkoła:</span><span class="yellow-color">{{user.judges.szkoła}}</span><br>
+        <span class="white-text">Organizacja:</span><span class="yellow-color">{{user.judges.organizacja}}</span><br>
+        <span class="white-text">Profil:</span><span><a href="{{user.judges.facebook}}">Facebook</a></span><br>
+        <span class="white-text">Dyspozycyjność:</span><span class="yellow-color">{{user.judges.dyspozycyjnosc}}</span><br>
+        <span class="white-text">Opis:</span><span class="yellow-color">{{user.judges.opis}}</span><br>
+
+        <a id='bt' class="btn btn-info btn-lg" href="{% url 'ksm_app:judges_update' %}" role="button">Edytuj</a>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

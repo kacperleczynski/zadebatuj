@@ -1,0 +1,57 @@
+{% extends "ksm_app/base.html" %}
+{% block body_block %}
+
+<style media="screen">
+  #jumbotron1{
+    background-color: #212830;
+    color: white;
+  }
+  #central{
+    background-color: #5caad1;
+    color: white;
+    text-align: center;
+  }
+  h1{
+    font-size:80px;
+  }
+  .input-group {
+    width: 500px;
+    left: 25%;
+  }
+</style>
+
+<div id=central class="jumbotron">
+  <h1>Zaloguj się </h1>
+<div class="container">
+  <div id=jumbotron1 class="jumbotron">
+
+    <form  action="{% url 'ksm_app:user_login' %}" method="post">
+      {% csrf_token %}
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Nazwa użytkownika</span>
+        </div>
+        <input type="text" name = "username" class="form-control" placeholder="Nazwa użytkownika" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Hasło</span>
+        </div>
+        <input type="password" name = "password" class="form-control"  aria-label="Password" aria-describedby="basic-addon1">
+      </div>
+
+
+      <button type="submit" class="btn btn-outline-info btn-lg">Zaloguj</button>
+
+    </form>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+
+{% endblock %}

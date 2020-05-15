@@ -1,0 +1,264 @@
+{% extends "ksm_app/base.html" %}
+{% block body_block %}
+<style media="screen">
+  #jumbotron1{
+    background-color: #212830;
+    color: white;
+  }
+  #central{
+    background-color: #5caad1;
+    color: white;
+    text-align: center;
+  }
+  h1{
+    font-size:80px;
+  }
+ h4{
+   color: #e8e37d;
+ }
+</style>
+<div id=central class="jumbotron">
+  <div class="container">
+      <h1>Instrukcja</h1>
+    <div id=jumbotron1 class="jumbotron">
+      <ul>
+        <li><h3>Strona Zadebatuj.pl służy do organizowania sparingów debatanckich
+           1vs1. Na stronie znajduje się lista sędziów, którzy podają w jakich
+           terminach są dostępni i mogą sędziować sparing zainteresowanych osób.
+        </h3></li><br>
+        <li><h3>
+          Aby móc korzystać ze strony Zadebatuj.pl należy zarejestrować się jako
+           debatant, podając swoje dane kontaktowe oraz preferowane terminy
+           sparingów.
+        </h3></li><br>
+        <li><h3>
+          Po zalogowaniu na stronie, pojawia się lista sędziów. W profilu
+          sędziego znajdują się dane kontaktowe oraz jego dyspozycja do
+          sędziowania w danym terminie.
+        </h3></li><br>
+        <li><h3>
+        W celu zorganizowania debaty, mówca powinien w pierwszej kolejności
+         znaleźć partnera do udziału w debacie a następnie skontaktować się z
+         wybranym sędzią (za pośrednictwem podanych w jego profilu: maila lub
+         profilu Facebook) w celu umówienia terminu debaty.
+      </h3></li><br>
+      <li><h3>
+        Po ustaleniu z wybranym sędzią terminu debaty oraz jej tematu, sędzia
+        tworzy wydarzenie, które widnieje jako zaplanowane w zakładce „Debaty”.
+        Osoby, które chcą obejrzeć debatę mogą dołączyć do transmisji live, do
+        której link znajduje się w opisie wydarzenia.
+      </h3></li><br>
+      <li><h3>
+        Rejestracja dla sędziów jest dostępna tylko dla osób posiadających kod
+        dostępu.
+      </h3></li><br>
+      <li><h3>
+        Debaty odbywają się w formacie 1 vs 1 i są oceniane przez jednego
+        sędziego z Krakowskiego Stowarzyszenia Mówców, według
+        <a href="https://drive.google.com/file/d/1bO6r0nl8WJsyekh3jo2wV2kpJIpgoMdU/view?fbclid=IwAR1y2uATHOi9WZHlwjtqmAY1YFhmlNsGwrLUthga_jvGOFZ_o1WgfFyd6t0" download> karty oceny</a>
+      </h3></li><br>
+      <li><h3>
+        Debaty odbywają się przy użyciu platformy Google Hangouts Meet.
+        Zaproszenie do udziału w wideokonferencji otrzymują mailowo jedynie
+        mówcy biorący udział w debacie. Publiczność może dołączyć do transmisji
+        live.
+      </h3></li><br>
+      <li><h3>
+        Opis formatu 1vs1 znajduje się poniżej.
+      </h3></li><br>
+      <li><h3>
+        Administratorem strony Zadebatuj.pl Jest Krakowskie Stowarzyszenie
+        Mówców. Dane zalogowanych użytkowników nie są w żaden sposób
+        wykorzystywane poza stroną Zadebatuj.pl
+      </h3></li><br>
+      <li><h3><a href="#">Film instruktażowy „Jak korzystać ze strony Zadebatuj.pl”</a></h3></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id=central class="jumbotron">
+  <div class="container">
+      <h1>Format Debat 1v1</h1>
+    <div id=jumbotron1 class="jumbotron">
+      <img src="/static/images/vs.png" width="500" height="500" alt=""><br><br>
+      <ul>
+        <li><h3>
+          W mowach wprowadzających, mówcy propozycji i opozycji rozpoczynają
+          dyskusję od wprowadzenia do tematu debaty. Mówca powinien w tym miejscu:
+          Wyznaczyć ramy dyskusji, określić co jest w niej najważniejsze oraz
+          kogo ona dotyczy, na jakich płaszczyznach będzie rozpatrywana.
+          W pierwszej mowie powinny pojawić się definicje pomagające zbudować
+          wspólne wyobrażenie o danym temacie, nakreślenie swojej linii
+          argumentacyjnej i stanowiska danego mówcy.
+          Mowa wprowadzająca to niejako połączenie „pierwszego stołu”
+          znanego z debat Oksfordzkich i Parlamentarnych.
+        </h3></li><br>
+        <li><h3>
+          Drugim elementem debaty 1vs1 jest runda pytań.
+          Dla każdego z mówców trwa ona 3 minuty. Na tym etapie mówca
+          może zadawać dowolną liczbę pytań swojemu przeciwnikowi.
+          Mogą to być przykładowo 3 krótsze pytania lub 1 długie.
+          Mówcy mogą wchodzić ze sobą w polemikę, ale nie mogą przekroczyć
+          limitu czasowego. Nie ma limitu czasu przeznaczonego na odpowiedź,
+          jednak powinna ona być zwięzła. Jeżeli mówca zadający pytanie uzna,
+          że temat został wyczerpany, powinien poprosić odpowiadającego o
+          zakończenie wypowiedzi.
+        </h3></li><br>
+        <li><h3>
+          Następnym elementem są 5 minutowe mowy Argumentacyjne.
+          Na tym etapie mówcy rozwijają swoje stanowisko w danym temacie.
+          Jest to mowa w której powinna pojawić się właściwa linia argumentacyjna.
+          Mówcy mogą w tym miejscu odnosić się do tego co powiedział rywal, ale
+          powinni raczej skupić się na swoich argumentach.
+        </h3></li><br>
+        <li><h3>
+          Po mowach argumentacyjnych powtarzamy rundę pytań.
+        </h3></li><br>
+        <li><h3>
+          Na zakończenie debaty, każdy z mówców ma 2 minuty czasu
+          by podsumować to co się na niej wydarzyło. Może Powiedzieć co jego
+          zdaniem było w tej dyskusji najważniejsze i zważyć pojawiające się
+          argumenty.
+        </h3></li><br>
+        <li><h3>
+          Każdy z mówców ma zatem 12 minut właściwego wystąpienia
+          oraz 4 minuty przeznaczone na zadawanie pytań. Debatę rozpoczyna
+          mówca propozycji a kończy mówca opozycji. Format ten nie przewiduje
+          zadawania pytań w trakcie wystąpień, by umożliwić debatantom pełne
+          skupienie na swojej mowie. Jednocześnie, rundy pytań w których można
+          wchodzić w dialog z przeciwnikiem sprawiają, że debata staje się
+          bardziej dynamiczna.
+        </h3></li><br>
+        <li><h3><a href="#">Film instruktarzowy „Debaty w formacie 1vs1”</a></h3></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id=central class="jumbotron">
+  <div class="container">
+      <h1>Sposób oceniania</h1>
+    <div id=jumbotron1 class="jumbotron">
+      <img src="/static/images/karta.png" width="550" height="550" alt=""><br><br>
+      <h3><a href="https://drive.google.com/file/d/1bO6r0nl8WJsyekh3jo2wV2kpJIpgoMdU/view?fbclid=IwAR1y2uATHOi9WZHlwjtqmAY1YFhmlNsGwrLUthga_jvGOFZ_o1WgfFyd6t0" download> Karta oceny</a></h3>
+      <br>
+      <ul>
+        <li><h3>
+          Struktura: oceniana pod kątem uporządkowania treści w wypowiedzi
+          mówcy. Czy mowa jest dobrze przemyślana, czy płynnie wprowadza
+          słuchacza w następujące treści wystąpienia</h3> <br><br>
+          <h4>0- Mowa nieuporządkowana, treści wrzucane są bez namysłu i sensu w
+          ich następowaniu. <br> <br>
+          1- Pojawiają się zalążki struktury, nie ma problemów ze zrozumieniem
+          o co chodzi w mowie. <br> <br>
+          2- Mowa dobrze ustrukturyzowana, przemyślana.</h4>
+        </li><br>
+        <li><h3>
+          Wypełnienie roli w tej części debaty: Czy mówca wprowadza elementy
+          niezbędne na danym etapie dyskusji, dobrze wykorzystuje swój czas?</h3><br><br>
+          <h4>0- Nie wypełnienie roli przypadającej na tę część debaty. <br> <br>
+          1- Wypełnienie części . <br> <br>
+          2- Adekwatne wypełnienie swojej roli do danego miejsca w debacie .</h4>
+        </li><br>
+        <li><h3>
+          Merytoryka wypowiedzi:
+        </h3><br>
+        <h4>
+          0- Mowa pozbawiana wartości merytorycznych, oparta na nieudowodnionych
+          założeniach. <br> <br>
+          1- Pojawiają się założenia i są uprawdopodabniane. <br> <br>
+          2- Mowa merytoryczna, dobre, adekwatne założenia, oparte na faktach,
+          względnie udowodnione. <br> <br>
+          3- dobre adekwatne założenia, pojawiają się fakty, dobre udowodnienie. <br> <br>
+          4- dodatkowo pojawiają się szczególnie ważne dla debaty argumenty.
+        </h4>
+        </li><br>
+        <li><h3>Impact na debatę: Poziom w jakim mówca w danym momencie wpływa
+                na przebieg debaty, czy treści przez niego podnoszone mają
+                szczególne znaczenie dla losów debaty, wprowadzają do niej
+                ważne wątki lub płaszczyzny?</h3> <br>
+                <h4>0- Bez wpływu na debatę (mowy mogłoby nie być)
+          1- Pojawiają się tylko najoczywistsze kwestie nie mające szczególnego
+          wpływu na przebieg debaty. <br> <br>
+          2- Mówca wprowadza nowe atrakcyjne kwestie, argumenty, które
+          przybliżają go do zwycięstwa. <br> <br>
+          3- Pojawiają się bardzo trafne i ważne dla debaty treści, które
+          znacznie wpływają na przebieg debaty. <br> <br>
+          4- Wprowadzone przez mówcę treści są doskonale osadzone w debacie,
+          mają kluczowe znaczenie.
+          (W przypadku rundy pytań i podsumowania, impact oceniany jest w skali
+          do 2 pkt proporcjonalnie) </h4>
+        </li> <br>
+        <li><h3>
+          Responswyność: Poziom radzenia sobie z zadawaniem i odpowiadaniem na pytania.
+        </h3> <br>
+        <h4>0- Pytania zadawane nieumiejętnie, niejasne
+            (analogicznie odpowiedzi) <br> <br>
+            1- Dobrze skonstruowane pytania ale brak polemiki
+            (analogicznie odpowiedzi) <br> <br>
+            2- Pojawiają się dobre pytania i wynika z nich dalsza dyskusja
+            (analogicznie odpowiedzi)</h4>
+      </li> <br>
+      <li><h3>
+        Wierność tematowi:
+      </h3> <br>
+      <h4>
+        0- Pytania nie odnoszą się do tematu, są zbędne
+        (analogicznie odpowiedzi) <br> <br>
+        1- Pytania są adekwatne i dobrze skonstruowane
+        (analogicznie odpowiedzi) <br> <br>
+        2- Bardzo dobre pytania, trafiające w sedno wypowiedzi przeciwnika
+        (analogicznie odpowiedzi)
+      </h4>
+    </li> <br>
+    <li><h3>
+      Zważenie najważniejszych argumentów i osi sporu:
+    </h3> <br>
+    <h4>
+      0- Nie występuje. <br> <br>
+      1- Mówca waży pojawiające się w debacie argumenty i osie sporu. <br> <br>
+      2- Mówca wybiera najważniejsze kwestie i na ich podstawie ocenia
+      przebieg debaty.
+    </h4>
+    </li> <br>
+    <li><h3>
+      Werdykt sędziego:
+    </h3> <br>
+    <h4>
+      10 punktów do rozdysponowania pomiędzy dwóch mówców. Werdykt może
+      przybrać formę: 6:4/7:3/8:2/9:1/10:0 jednak nigdy nie 5:5
+    </h4>
+    </li> <br>
+    <li><h3>
+      Argumentacja:
+    </h3> <br>
+    <h4>
+      0-2 Brak argumentów, pojawiają się jedynie stwierdzenia (state) <br> <br>
+      2-4 Argumenty mają poprawną strukturę, brakuje im analizy. <br> <br>
+      4-6 Argumenty są odpowiednio przeanalizowane i uprawdopodobnione.
+      Dobra struktura. <br> <br>
+      6-8 Bardzo dobre argumenty, świetna i zrozumiała analiza, linkowanie do tematu.
+    </h4>
+    </li> <br>
+    <li><h3>
+      Kontrargumentacja:
+    </h3><br>
+    <h4>
+      0-2 Pojawiają się jedynie wrzutki mające zbijać twierdzenia przeciwnika. <br> <br>
+      2-4 Twierdzenia przeciwnika są skutecznie podważane ale nie zostają zbite. <br> <br>
+      4-6 Celne zbijanie twierdzeń przeciwnika, konstruowanie argumentów
+      stojących w kontrze. <br> <br>
+      6-8 Wykazanie nieprawidłowości w najważniejszych argumentach przeciwnika,
+      zbudowanie argumentów kontrujących jego twierdzenia.
+      Celna i skuteczna kontrargumentacja.
+    </h4>
+    </li> <br>
+    <li>
+      <h3><a href="http://hellomotions.com/?fbclid=IwAR3cRWgOodJCd-jH0E3reuDvDXhf_3dGbZKUIvhQ1erEZ2ZVGX8-mCbJjeE">
+      Strona z przykładowymi tematami debat</a></h3>
+    </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

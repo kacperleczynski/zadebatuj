@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+{% load has_group %}
+<html lang="en" dir="ltr">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style media="screen">
+    .hero-image{
+      background: url("/static/images/ksm.jpg");
+      background-color: #cccccc;
+      height: 680px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      max-width: 100%;
+  }
+  .hero-text {
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+.hero-text h1{
+  font-size: 100px;
+}
+
+
+
+
+    </style>
+    <meta charset="utf-8">
+    <title>Krakowskie stowarzyszenie mówców</title>
+    <link rel="stylesheet" href="{% static '/css/myscript.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+  <body>
+    <nav class="navbar fixed-top navbar-light" style="background-color: white;">
+        <a href="{% url 'ksm_app:base' %}"><img
+                src="https://scontent.fktw1-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/61695035_726278214470494_3799809462861037568_n.png?_nc_cat=106&_nc_sid=b96e70&_nc_ohc=cRUqJToZ_oMAX9kYMPB&_nc_ht=scontent.fktw1-1.fna&oh=550d77036075bfac270bd401ed84b5ec&oe=5ECB3F87"
+                class="img-fluid" alt="Responsive image" width="150"></a>
+
+        {% if user.is_authenticated %}
+          <a class="navbar-brand" href="{% url 'ksm_app:instruction' %}">Instrukcja</a>
+          <a class="navbar-brand" href="{% url 'ksm_app:live' %}">Debaty</a>
+          <a class="navbar-brand" href="{% url 'ksm_app:debatants_list' %}">Lista debatantów</a>
+          <a class="navbar-brand" href="{% url 'ksm_app:judges_list' %}">Sędziowie</a>
+          <div class="dropdown">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+              @ {{ user.username }}
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="{% url 'logout' %}">Wyloguj</a>
+            {% if request.user|has_group:"judges" %}
+              <a class="dropdown-item" href="{% url 'ksm_app:judges_profile' %}">Mój profil</a>
+            {% else %}
+            <a class="dropdown-item" href="{% url 'ksm_app:debatants_profile' %}">Mój profil</a>
+            {% endif %}
+
+            </div>
+            </div>
+            </div>
+
+        {% else %}
+          <a class="navbar-brand" href="{% url 'ksm_app:instruction' %}">Instrukcja</a>
+          <a class="navbar-brand" href="{% url 'ksm_app:live' %}">Debaty</a>
+          <a class="navbar-brand" href="{% url 'ksm_app:choose' %}">Zarejestruj</a>
+          <a class="navbar-brand" href="{% url 'ksm_app:user_login' %}">Zaloguj</a>
+        {% endif %}
+    </nav>
+
+    <nav class="navbar fixed-bottom navbar-light" style="background-color: white;">
+      <a class="navbar-brand" href="https://www.facebook.com/ksmowcow/">
+        <img src="/static/images/facebook.svg" width="30" height="30" alt=""> Facebook
+      </a>
+      <a class="navbar-brand" href="mailto:ksmowcow@gmail.com">
+        <img src="/static/images/email.svg" width="30" height="30" alt=""> Email
+      </a>
+      <a class="navbar-brand" href="{% url 'ksm_app:phone' %}">
+        <img src="/static/images/phone.svg.png" width="30" height="30" alt=""> Telefon
+      </a>
+      <a class="navbar-brand" href="https://www.twitch.tv/zadebatuj?fbclid=IwAR2ph7US9W8x_1OVUhwjenJaoWFWOF33RQyxygOHGvwWXLTNX9ROdblhHoA">
+        <img src="/static/images/twitch.svg.png" width="30" height="30" alt=""> Twitch
+      </a>
+    </nav>
+    {% block body_block %}
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="/static/images/third.jpg" alt="Second slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h1>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/static/images/eighth.jpg" alt="Third slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h3>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/static/images/seventh.jpg" alt="Third slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h3>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/static/images/sixth.jpg" alt="Third slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h3>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/static/images/fourth.jpg" alt="Third slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h3>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/static/images/fifth.jpg" alt="Third slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h3>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/static/images/second.jpg" alt="Third slide">
+          <div class="hero-text">
+            <h1>ZADEBATUJ.PL</h3>
+            <h2>KRAKOWSKIE STOWARZYSZENIE MÓWCÓW</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+
+
+    {% endblock %}
+  </body>
+</html>
