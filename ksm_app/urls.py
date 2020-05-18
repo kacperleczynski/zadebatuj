@@ -2,7 +2,6 @@ from django.urls import path
 from ksm_app import views
 from django.conf.urls.static import static
 from django.conf import settings
-
 app_name = 'ksm_app'
 
 urlpatterns = [
@@ -26,6 +25,7 @@ urlpatterns = [
     path('judges_update/', views.edit_judges_profile, name = 'judges_update'),
     path('debatants_update/', views.edit_debatants_profile, name = 'debatants_update'),
     path('instruction/', views.instruction, name = 'instruction'),
+    path('clock/',views.index, name = 'clock')
 
 ]
 

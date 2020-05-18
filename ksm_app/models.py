@@ -13,6 +13,9 @@ class Debatants(models.Model):
     facebook = models.URLField(max_length = 256, null = True)
     opis = models.TextField(max_length=1000, null = True)
     terminy = models.TextField(max_length=1000, null = True)
+    accept = models.BooleanField(default=False)
+    accept2 = models.BooleanField(default=False)
+
 
     class Meta:
         ordering = ['imię']
@@ -33,7 +36,8 @@ class Judges(models.Model):
     dyspozycyjnosc = models.TextField(max_length= 1000)
     opis = models.TextField(max_length = 2000)
     facebook = models.URLField(max_length = 256, null = True)
-
+    accept = models.BooleanField(default=False)
+    accept2 = models.BooleanField(default=False)
     class Meta:
         ordering = ['imię']
 

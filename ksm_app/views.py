@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
-from ksm_app.decorators import allowed_users
+from ksm_app.decorators import allowed_users, unauthenticated_user
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -16,6 +16,9 @@ from django import template
 from django.utils.translation import gettext as _
 
 # Create your views here.
+def index(request):
+    return render(request, 'ksm_app/index.html')
+
 def base(request):
     return render(request, 'ksm_app/base.html')
 
@@ -76,6 +79,7 @@ def DebatantsRegister(request):
                     'registered':registered})
 
 def JudgesRegister(request):
+    
     my_group = Group.objects.get(name='judges')
     registered = False
 

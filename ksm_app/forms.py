@@ -23,10 +23,12 @@ class DebatantsProfileInfo(forms.ModelForm):
     opis = forms.CharField(required = False)
     terminy = forms.CharField(required = False,
                 label = 'Terminy sparingów (Preferowane)')
+    accept = forms.BooleanField(required=True, label='Akceptuje Regulamin')
+    accept2 = forms.BooleanField(required=True, label = '')
     class Meta():
         model = Debatants
         fields = ['imię','nazwisko','email','miasto','szkoła','organizacja',
-                  'facebook','opis', 'terminy']
+                  'facebook','opis', 'terminy','accept', 'accept2']
         labels = {
             'facebook':'Profil Facebook',
         }
@@ -35,10 +37,12 @@ class JudgesProfileInfo(forms.ModelForm):
     organizacja = forms.CharField(required = False)
     dyspozycyjnosc = forms.CharField(required = False)
     opis = forms.CharField(required= False)
+    accept = forms.BooleanField(required=True, label='Akceptuje Regulamin')
+    accept2 = forms.BooleanField(required=True, label = '')
     class Meta():
         model = Judges
         fields = ['imię','nazwisko','email','miasto','szkoła','organizacja',
-                  'dyspozycyjnosc','opis', 'facebook']
+                  'dyspozycyjnosc','opis', 'facebook','accept', 'accept2']
         labels = {
             'facebook':'Profil Facebook',
             'dyspozycyjnosc':'Dyspozycyjność'
