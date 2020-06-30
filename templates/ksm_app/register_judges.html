@@ -43,12 +43,14 @@
             <span class="input-group-text" id="basic-addon1">Nazwa użytkownika</span>
           </div>
           {{ user_form.username }}
+          <p>Uwaga! Nazwa użytkownika bez spacji</p>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Hasło</span>
           </div>
           {{user_form.password }}
+          <p>Hasło najlepiej składające się z więcej niż 6 znaków</p>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -102,7 +104,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Dyspozycyjność</span>
           </div>
-          {{ debatants_form.dyspozycyjnosc }}
+          {{ judges_form.dyspozycyjnosc }}
         </div>
         Akceptuje Regulamin:(<a href="{% url 'ksm_app:instruction' %}">Regulamin</a>)
         {{ judges_form.accept }}<br><br>

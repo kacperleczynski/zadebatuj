@@ -58,9 +58,9 @@ class JudgesForm(forms.ModelForm):
             'dyspozycyjnosc','opis', 'facebook']
 
 class DebatantsBattleForm(forms.ModelForm):
-    data = forms.DateField(input_formats = settings.DATE_INPUT_FORMATS,
-                           widget = forms.TextInput(attrs={'placeholder':'dd.mm.rr'}))
+    data = forms.DateField(widget = forms.TextInput(attrs={'placeholder':'RRRR-MM-DD'}))
     transmisja = forms.URLField(required = False)
+    godzina = forms.TimeField(widget = forms.TextInput(attrs={'placeholder':'gg:mm'}))
     class Meta:
         model = DebatantsBattle
         fields = ['user1','user2','judge','data','godzina','transmisja']

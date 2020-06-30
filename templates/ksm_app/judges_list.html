@@ -19,21 +19,17 @@
   <h1>Lista sędziów</h1>
   <div class="container">
     <div id=jumbotron1 class="jumbotron">
-      {% for judge in judges %}
-
-          <h3><a class="list-group-item list-group-item-primary" href="{% url 'ksm_app:detail' judge.id %}">{{ judge.imię }} {{ judge.nazwisko }}</a></h3>
-
-      {% endfor %}
-      <p>
+              <p>
         <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Kalendarz
         </a>
         <div class="collapse" id="collapseExample"> <br> <br>
           <div class="card card-body">
-            <iframe src="https://calendar.google.com/calendar/embed?src=zadebatuj%40ksmowcow.pl&ctz=Europe%2FWarsaw" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-          </div>
+            <iframe src="https://calendar.google.com/calendar/embed?src=ksmowcow.pl_nops1c9klcp7eom2jatvo5bicg%40group.calendar.google.com&ctz=Europe%2FWarsaw" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>          </div>
         </div>
-
+      {% for judge in judges %}
+          <h3><a class="list-group-item list-group-item-primary" href="{% url 'ksm_app:detail' judge.id %}">{{ judge.imię }} {{ judge.nazwisko }}</a></h3>
+      {% endfor %}
     </div>
   </div>
 </div>

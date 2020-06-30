@@ -15,7 +15,7 @@
   transform: translate(-50%, -50%);
   color: white;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  font-family:'Oxygen';
+  font-family:'Arial';
 
 }
 .hero-text h1{
@@ -23,6 +23,7 @@
 }
 .hero-text h2{
   font-size: 25px;
+  font-family: 'Heuristica';
 }
 
 .bg {
@@ -62,6 +63,27 @@
   border-bottom: 2px solid #8c8e9c;
   font-size: 150%;
 }
+#me{
+  font-size: 9px;
+  text-align: center
+}
+
+#icon1:hover{
+  width: 40px;
+  height: 40px;
+}
+#icon2:hover{
+  width: 40px;
+  height: 40px;
+}
+#icon3:hover{
+  width: 40px;
+  height: 40px;
+}
+#icon4:hover{
+  width: 40px;
+  height: 40px;
+}
 
 
 
@@ -77,8 +99,7 @@
 </head>
   <body>
     <nav class="navbar fixed-top navbar-light" style="background-color: white;">
-        <a id=logo href="{% url 'ksm_app:base' %}"><img
-                src="https://scontent.fktw1-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/61695035_726278214470494_3799809462861037568_n.png?_nc_cat=106&_nc_sid=b96e70&_nc_ohc=cRUqJToZ_oMAX9kYMPB&_nc_ht=scontent.fktw1-1.fna&oh=550d77036075bfac270bd401ed84b5ec&oe=5ECB3F87"
+        <a id=logo href="{% url 'ksm_app:base' %}"><img src="/static/images/logo.png"
                 class="img-fluid" alt="Responsive image" width="150"></a>
 
         {% if user.is_authenticated %}
@@ -114,19 +135,26 @@
         {% endif %}
     </nav>
 
+
     <nav class="navbar fixed-bottom navbar-light" style="background-color: white;">
-      <a class="navbar-brand" href="https://www.facebook.com/ksmowcow/">
-        <img src="/static/images/facebook.svg" width="30" height="30" alt=""> Facebook
+    <div id='me'>
+        Copyright &copy; 2020, Kacper Łęczyński <br>
+        Strona Zadebatuj.pl jest własnością Krakowskiego Stowarzyszenia Mówców
+    </div>
+    <div>
+      <a class="navbar-brand" href="https://www.facebook.com/ksmowcow/ " target="_blank">
+        <img id='icon1' src="/static/images/facebook.svg" width="30" height="30" alt="">
       </a>
       <a class="navbar-brand" href="mailto:ksmowcow@gmail.com">
-        <img  src="/static/images/email.svg" width="30" height="30" alt=""> Email
+        <img id='icon2' src="/static/images/email.svg" width="30" height="30" alt="">
       </a>
       <a class="navbar-brand" href="{% url 'ksm_app:phone' %}">
-        <img src="/static/images/phone.svg.png" width="30" height="30" alt=""> Telefon
+        <img id='icon3' src="/static/images/phone.svg.png" width="30" height="30" alt="">
       </a>
-      <a id=twitch class="navbar-brand" href="https://www.youtube.com/channel/UCd2KIvR-DMDGMT_ce2gJzAw">
-        <img src="/static/images/yt.svg.png" width="30" height="30" alt=""> YouTube
+      <a class="navbar-brand" href="https://www.youtube.com/channel/UCd2KIvR-DMDGMT_ce2gJzAw " target="_blank">
+        <img id='icon4' src="/static/images/yt.svg.png" width="30" height="30" alt="">
       </a>
+    </div>
     </nav>
     {% block body_block %}
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">

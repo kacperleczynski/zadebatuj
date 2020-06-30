@@ -23,9 +23,9 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = '8ie1hb*7d7j8ay0z@)7^!_gt(xns0wo1o%i!4nh9_hpjtt(e1='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["www.zadebatuj.pl"]
 
 
 # Application definition

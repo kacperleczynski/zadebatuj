@@ -163,7 +163,7 @@
     function adVocem() {
         clearInterval(interval);
         started = false;
-        minuty = 1;
+        minuty = 2;
         sekundy = 0;
         $('#timer').find('.timer-minutes').text(minuty);
         $('#timer').find('.timer-seconds').text("0" + sekundy);
@@ -191,7 +191,7 @@
             $('.joker-controls').show();
         clearInterval(intervalJoker);
         $('.joker-timer').show();
-        minutyJoker = 0;
+        minutyJoker = 2;
         sekundyJoker = 30;
         $('#timer').find('.joker-minutes').text(minutyJoker);
         $('#timer').find('.joker-seconds').text(sekundyJoker);
