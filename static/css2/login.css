@@ -1,0 +1,14 @@
+.registration{
+    height: 90vh!important;
+}
+form{
+    height: 70%;
+    width: 50%!important;
+}
+form .form{
+    width: 100% !important;
+}
+form .button-submit{
+    width: 100%;
+    margin-top: 100px;
+}

@@ -1,0 +1,217 @@
+body {
+    background: none;
+    height: 90vh;
+}
+
+header {
+    background-color: #222222;
+}
+
+.registration {
+    height: auto;
+    padding-top: 10vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration h1 {
+    padding-top: 10px;
+}
+
+form {
+    padding-top: 10px;
+    width: 50% !important;
+}
+
+form .form {
+    margin-top: 10px;
+    width: 100% !important;
+}
+
+form .rules {
+    margin-top: 20px;
+    width: 100%;
+}
+
+form .button-submit {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.form {
+    width: 50%;
+    position: relative;
+    height: 70px;
+    overflow: hidden;
+}
+
+.form input {
+    width: 100%;
+    height: 100%;
+    color: #595f6e;
+    padding-top: 20px;
+    border: none;
+    outline: none;
+}
+
+.form label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid black;
+}
+
+.form label::after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: -2px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #5fa8d3;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.content-name {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.form input:focus + .label-name .content-name, .form input:valid + .label-name .content-name {
+    transform: translateY(-150%);
+    font-size: 14px;
+    color: #5fa8d3;
+}
+
+.form input:focus + .label-name::after, .form input:valid + .label-name::after {
+    transform: translateX(0%);
+}
+
+.rules {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.checkbox2 a {
+    text-decoration: none;
+    color: #5fa8d3;
+}
+
+.checkbox2 a:hover {
+    border-bottom: 1px solid #5fa8d3;
+}
+
+.modal-body p {
+    font-size: 9px;
+}
+
+.button-submit {
+    width: 50%;
+    height: 40px;
+    background-color: #222222;
+    border: none;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.button-submit:hover {
+    animation: color 0.5s forwards;
+}
+
+.form-text {
+    font-size: 12px;
+}
+
+.registered {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registered a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    border: 1px solid black;
+    background-color: #999999;
+    padding: 10px 10px;
+
+}
+
+.registered a:hover {
+    background-color: #383d41;
+    color: white;
+    transition: all 1s ease-in-out;
+}
+
+@keyframes color {
+    100% {
+        background-color: #5fa8d3;
+        border: 1px solid #36769c
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .form, .button-submit {
+        width: 80%;
+    }
+    .rules {
+        width: 80%;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .modal-body {
+        height: 500px;
+    }
+
+    .modal-body p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .registration h1 {
+        font-size: 22px;
+    }
+
+    .modal-body p {
+        font-size: 8px;
+    }
+
+    .modal {
+        width: 400px !important;
+        height: 350px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .registration h1 {
+        font-size: 20px;
+    }
+
+    .modal {
+        width: 280px !important;
+        height: 350px;
+    }
+
+    .modal-body p {
+        font-size: 7px;
+    }
+
+    .form-text {
+        font-size: 10px;
+    }
+}

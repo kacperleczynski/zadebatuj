@@ -1,0 +1,323 @@
+{% load static %}
+{% load has_group %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/rwd.css' %}">
+    <link rel="stylesheet" href="{% static '/css/instruction.css' %}">
+    <link rel="stylesheet" href="{% static '/css/rwdinstruction.css' %}">
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Instruction - KSM</title>
+</head>
+<body>
+<header class="main-container">
+    <div class="logo">
+        <a href="{% url 'ksm_app:base' %}"><img src="{% static '/img2/KSM_logo_poziom_biel-kopia.png' %}" alt=""></a>
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav>
+        <ul class="nav-links">
+            {% if user.is_authenticated %}
+                <li class="nav-link"><a href="{% url 'ksm_app:debatants_list' %}">Lista debatantów</a></li>
+                <li class="nav-link"><a href="{% url 'ksm_app:judges_list' %}">Sędziowie</a></li>
+                {% if request.user|has_group:"judges" %}
+                    <li class="nav-link"><a href="{% url 'ksm_app:clock' %}">Zegar</a></li>
+                {% endif %}
+                {% if request.user|has_group:'judges' %}
+                    <li class="nav-link"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
+                {% else %}
+                    <li class="nav-link-user"><a href="{% url 'ksm_app:debatants_profile' %}"> {{ user.username }}</a>
+                    </li>
+                {% endif %}
+            {% else %}
+                <li class="nav-link"><a href="{% url 'ksm_app:choose' %}">Zarejestruj</a></li>
+                <li class="nav-link"><a href="{% url 'ksm_app:user_login' %}">Zaloguj</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<main class="instruction-main">
+    <h1>Jak korzystać</h1>
+    <div class="cards">
+        <div class="card">
+            <h2><a href="#instrukcja">Instrukcja</a></h2>
+        </div>
+        <div class="card">
+            <h2><a href="#ocena">Format 1 vs 1</a></h2>
+        </div>
+        <div class="card">
+            <h2><a href="#regulamin">Regulamin</a></h2>
+        </div>
+    </div>
+</main>
+<section id="instrukcja" class="instruction">
+    <div class="instruction-text">
+        <h1>Instrukcja</h1>
+    </div>
+    <div class="instruction-content">
+        <h3>Strona Zadebatuj.pl służy do organizowania sparingów debatanckich
+            1vs1. Na stronie znajduje się lista sędziów, którzy podają w jakich
+            terminach są dostępni i mogą sędziować sparing zainteresowanych osób.</h3><br>
+        <h3>Aby móc korzystać ze strony Zadebatuj.pl należy zarejestrować się jako debatant, podając swoje dane
+            kontaktowe oraz preferowane terminy sparingów.</h3><br>
+        <h3>Po zalogowaniu na stronie, pojawia się lista sędziów. W profilu każdego sędziego znajdują się jego dane
+            kontaktowe oraz dyspozycyjność</h3><br>
+        <h3>W celu zorganizowania debaty, mówca powinien w pierwszej kolejności znaleźć partnera do udziału w debacie, a
+            następnie skontaktować się z wybranym sędzią (za pośrednictwem podanych w jego profilu: maila lub profilu
+            Facebook) w celu umówienia terminu debaty.</h3><br>
+        <h3>Po ustaleniu z wybranym sędzią terminu i tematu debaty, sędzia tworzy wydarzenie, które widnieje jako
+            zaplanowane w zakładce „Debaty”. Osoby, które chcą obejrzeć debatę mogą dołączyć do transmisji live, do
+            której link znajduje się w opisie wydarzenia, tylko jeżeli mówcy biorący udział w debacie wyrażą na to
+            zgodę.</h3><br>
+        <h3>Za zgodą mówców, sędzia może nagrać debatę i opublikować ją na kanale Krakowskiego Stowarzyszenia Mówców w
+            serwisie Youtube.</h3><br>
+        <h3>Rejestracja dla sędziów jest dostępna tylko dla osób posiadających kod dostępu.</h3><br>
+        <h3>Debaty odbywają się w formacie 1 vs 1 i są oceniane przez jednego sędziego z Krakowskiego Stowarzyszenia
+            Mówców, według karty oceny</h3>
+        <br>
+        <h3>Debaty odbywają się przy użyciu platformy LiveWebinar. Zaproszenie do udziału w wideokonferencji otrzymują
+            mailowo jedynie mówcy biorący udział w debacie. Publiczność może dołączyć do trwającej debaty klikając w
+            link do transmisji w zakładce „Debaty”</h3><br>
+        <h3>Opis formatu 1vs1 znajduje się poniżej.</h3><br>
+        <h3>Administratorem strony Zadebatuj.pl Jest Krakowskie Stowarzyszenie Mówców. Dane zalogowanych użytkowników
+            nie są w żaden sposób wykorzystywane poza stroną Zadebatuj.pl</h3><br>
+        <h3>Poniżej znajduje się regulamin korzystania ze strony i zapisy dotyczące prywatności.</h3><br>
+        <h3>
+            <a href="https://www.youtube.com/watch?v=-TSqgAxHY1k&feature=youtu.be&fbclid=IwAR0KgDbaoELvv41I2e0tZ-_EiTaDF-C6bOwa1JjYH2gJEC7QMl3syYAEO3A "
+               target="_blank">Film
+                instruktażowy „Jak korzystać ze strony Zadebatuj.pl”</a></h3><br>
+        <h3>
+            <a href="https://drive.google.com/file/d/18iK-S7i1Op4DQCIYAZzBr0AE_GBtoNbY/view?fbclid=IwAR3qtcAL58zCzoqyfGnrGsNZccYj27HtKYWHRjDAx8AHPJUaD5J7vv0DVQo"
+               target="_blank">Karta
+                Oceny</a></h3><br>
+
+    </div>
+    <div id="ocena" class="instruction-text-two">
+        <h1>Format 1 vs 1</h1>
+    </div>
+    <div class="instruction-content-two">
+        <span class="instruction-link">
+            Mowy Wprowadzające
+        </span>
+        <h3>Mówcy propozycji i opozycji rozpoczynają dyskusję od wprowadzenia do tematu debaty. Mówca powinien w tym
+            miejscu: wyznaczyć ramy dyskusji, określić co jest w niej najważniejsze oraz kogo ona dotyczy, na jakich
+            płaszczyznach będzie rozpatrywana. W pierwszej mowie powinny pojawić się definicje pomagające zbudować
+            wspólne wyobrażenie o danym temacie, nakreślenie swojej linii argumentacyjnej i stanowiska danego mówcy.
+            Mowa wprowadzająca to niejako połączenie „pierwszego stołu” znanego z debat Oksfordzkich i
+            Parlamentarnych.</h3><br>
+        <span class="instruction-link">
+            Runda pytań
+        </span>
+        <h3>Drugim elementem debaty 1vs1 jest runda pytań. Dla każdego z mówców trwa ona 2 minuty. Na tym etapie mówca
+            może zadawać dowolną liczbę pytań swojemu przeciwnikowi. Mogą to być przykładowo 3 krótsze pytania lub 1
+            długie. Mówcy mogą wchodzić ze sobą w polemikę, ale nie mogą przekroczyć limitu czasowego. Nie ma limitu
+            czasu przeznaczonego na odpowiedź, jednak powinna ona być zwięzła. Jeżeli mówca zadający pytanie uzna, że
+            temat został wyczerpany, powinien poprosić odpowiadającego o zakończenie wypowiedzi.</h3><br>
+        <span class="instruction-link">
+            Mowy argumentacyjne
+        </span>
+        <h3>Następnym elementem są 5 minutowe mowy Argumentacyjne. Na tym etapie mówcy rozwijają swoje stanowisko w
+            danym temacie. Jest to mowa, w której powinna pojawić się właściwa linia argumentacyjna. Mówcy mogą w tym
+            miejscu odnosić się do tego co powiedział rywal, ale powinni raczej skupić się na swoich argumentach.</h3>
+        <br>
+        <span class="instruction-link">
+            Runda pytań
+        </span>
+        <h3>Po mowach argumentacyjnych powtarzamy rundę pytań.</h3><br>
+        <span class="instruction-link">
+            Podsumowanie
+        </span>
+        <h3>Na zakończenie debaty każdy z mówców ma 2 minuty czasu, by podsumować, to co się na niej wydarzyło w jej
+            trakcje.W tym miejscu warto powiedzieć, co zdaniem mówcy było w tej dyskusji najważniejsze i zważyć
+            pojawiające się w niej argumenty.</h3><br>
+        <span class="instruction-link">
+            W skrócie
+        </span>
+        <h3>Każdy z mówców ma zatem 12 minut właściwego wystąpienia oraz 4 minuty przeznaczone na zadawanie pytań.
+            Debatę rozpoczyna mówca propozycji a kończy mówca opozycji. Format ten nie przewiduje zadawania pytań w
+            trakcie wystąpień, by umożliwić debatantom pełne skupienie na swojej mowie. Jednocześnie, rundy pytań w
+            których można wchodzić w dialog z przeciwnikiem sprawiają, że debata staje się bardziej dynamiczna.</h3><br>
+        <button class="modal-button" data-modal-target="#modal">Format Debat</button>
+        <div id="modal" class="modal">
+            <div class="modal-header">
+                <div class="title">Format debat</div>
+                <button data-close-button class="close-button">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="{% static '/img2/1vs1.png' %}" alt="">
+            </div>
+        </div>
+        <div id="overlay"></div>
+        <h3><a href="#">Film instruktażowy „Debaty w formacie 1vs1”</a></h3>
+    </div>
+    <div class="instruction-text-two">
+        <h1>Sposób oceniania 1 vs 1</h1>
+    </div>
+    <div class="instruction-content-two">
+            <span class="instruction-link">Struktura: oceniana pod kątem uporządkowania treści w wypowiedzi mówcy.W tej części ocenia się m.in. czy
+                mowa jest dobrze przemyślana, czy płynnie wprowadza słuchacza w treść wystąpienia.</span><br>
+        <h3>0 - Mowa nieuporządkowana, treści wrzucane są bez namysłu, w następujących po sobie częściach nie widać
+            ciągu logicznego</h3><br>
+        <h3>1 - Pojawiają się zalążki struktury, nie ma problemów ze zrozumieniem, o co chodzi w mowie.</h3><br>
+        <h3>2 - Mowa dobrze ustrukturyzowana, przemyślana.</h3><br>
+        <span class="instruction-link">
+        Wypełnienie roli w tej części debaty: czy mówca wprowadza elementy niezbędne na danym etapie dyskusji, dobrze wykorzystuje swój czas?
+    </span>
+        <h3>0 - Niewypełnienie roli przypadającej na tę część debaty.</h3><br>
+        <h3>1 - Wypełnienie roli w części.</h3><br>
+        <h3>2 - Adekwatne wypełnienie swojej roli w tej części debaty.</h3><br>
+        <span class="instruction-link">
+        Merytoryka wypowiedzi:
+    </span>
+        <h3>0 - Mowa pozbawiana wartości merytorycznych, oparta na nieudowodnionych założeniach.</h3><br>
+        <h3>1 - Pojawiają się założenia i są uprawdopodabniane.</h3><br>
+        <h3>2 - Mowa merytoryczna, dobre, adekwatne założenia, oparte na faktach, względnie udowodnione.</h3><br>
+        <h3>3 - Dobre, adekwatne założenia. Pojawiają się fakty, które są należycie udowodnione. (albo coś w ten deseń,
+            żeby
+            nie było dobre dobre)</h3><br>
+        <h3>4 - Dodatkowo pojawiają się szczególnie ważne dla debaty argumenty.</h3><br>
+        <span class="instruction-link">
+            Wpływ na debatę: poziom, w jakim mówca w danym momencie wpływa na przebieg debaty, czy treści przez niego podnoszone mają szczególne znaczenie dla losów debaty, wprowadzają do niej ważne wątki lub płaszczyzny?
+        </span>
+        <h3>0 - Bez wpływu na debatę (mowy mogłoby nie być) 1- Pojawiają się tylko najoczywistsze kwestie, niemające
+            szczególnego wpływu na przebieg debaty.</h3><br>
+        <h3>2 - Mówca wprowadza nowe atrakcyjne kwestie, argumenty, które przybliżają go do zwycięstwa.</h3><br>
+        <h3>3 - Pojawiają się bardzo trafne i ważne dla debaty treści, które znacznie wpływają na przebieg debaty.</h3>
+        <br>
+        <h3>4 - Wprowadzone przez mówcę treści są doskonale osadzone w debacie, mają kluczowe znaczenie. (W przypadku
+            rundy pytań i podsumowania, wpływ oceniany jest w skali do 2 pkt proporcjonalnie</h3><br>
+        <span class="instruction-link">
+            Responsywność: poziom radzenia sobie z zadawaniem i odpowiadaniem na pytania.
+        </span>
+        <h3>0 - Pytania zadawane nieumiejętnie, niejasne (analogicznie odpowiedzi)</h3><br>
+        <h3>1 - Dobrze skonstruowane pytania ale brak polemiki (analogicznie odpowiedzi)</h3><br>
+        <h3>2 - Pojawiają się dobre pytania i wynika z nich dalsza dyskusja (analogicznie odpowiedzi)</h3><br>
+        <span class="instruction-link">
+            Wierność tematowi:
+        </span>
+        <h3>0 - Pytania nie odnoszą się do tematu, są zbędne (analogicznie odpowiedzi)</h3><br>
+        <h3>1 - Dobrze skonstruowane pytania, ale brak polemiki (analogicznie odpowiedzi)</h3><br>
+        <h3>2 - Pojawiają się trafne pytania i wynika z nich dalsza dyskusja (analogicznie odpowiedzi)</h3><br>
+        <span class="instruction-link">
+            Zważenie najważniejszych argumentów i osi sporu:
+        </span>
+        <h3>0 - Nie występuje.</h3><br>
+        <h3>1 - Mówca waży pojawiające się w debacie argumenty i osie sporu.</h3><br>
+        <h3>2 - Mówca wybiera najważniejsze kwestie i na ich podstawie ocenia przebieg debaty.</h3><br>
+        <span class="instruction-link">
+            Werdykt sędziego:
+        </span>
+        <h3>10 punktów do rozdysponowania pomiędzy dwóch mówców. Werdykt może przybrać formę:</h3><br>
+        <ul>
+            <li>6:4</li>
+            <li>7:3</li>
+            <li>8:2</li>
+            <li>9:1</li>
+            <li>10:0</li>
+            <br>
+        </ul>
+        <h3>jednak nigdy nie 5:5</h3><br>
+        <span class="instruction-link">
+            Argumentacja:
+        </span>
+        <h3>0 - 2 Brak argumentów, pojawiają się jedynie stwierdzenia (state'y).</h3><br>
+        <h3>2 - 4 Argumenty mają poprawną strukturę, brakuje im analizy.</h3><br>
+        <h3>4 - 6 Argumenty są odpowiednio przeanalizowane i uprawdopodobnione. Dobra struktura.</h3><br>
+        <h3>6 - 8 Bardzo dobre argumenty, świetna i zrozumiała analiza, linkowanie do tematu.</h3><br>
+        <span class="instruction-link">
+            Kontrargumentacja:
+        </span>
+        <h3>0 - 2 Pojawiają się jedynie wrzutki mające zbijać twierdzenia przeciwnika.</h3><br>
+        <h3>2 - 4 Twierdzenia przeciwnika są skutecznie podważane ale nie zostają zbite.</h3><br>
+        <h3>4 - 6 Celne zbijanie twierdzeń przeciwnika, konstruowanie argumentów stojących w kontrze.</h3><br>
+        <h3>6 - 8 Wykazanie nieprawidłowości w najważniejszych argumentach przeciwnika, zbudowanie argumentów
+            kontrujących jego twierdzenia. Celna i skuteczna kontrargumentacja.</h3><br>
+        <br><br>
+        <button class="modal-button" id="box1">Sposób oceniania</button>
+        <div id="popupBoxOnePosition">
+            <div class="popupBoxWrapper">
+                <div class="popupBoxContent">
+                    <h3>Sposób oceniania</h3>
+                    <img src="{% static '/img2/karta.png' %}" alt="">
+                    <button id="closebox1"> Zamknij</button>
+                </div>
+            </div>
+        </div>
+        <h3><a href="http://hellomotions.com/?fbclid=IwAR3cRWgOodJCd-jH0E3reuDvDXhf_3dGbZKUIvhQ1erEZ2ZVGX8-mCbJjeE"
+               target="_blank">Link z przykładowymi tematami debat</a></h3>
+    </div>
+    <div id="regulamin" class="instruction-text-two">
+        <h1>Regulamin</h1>
+    </div>
+    <div class="instruction-content-two">
+
+        <h3>1. Użytkownik tworząc konto zobowiązuje się do podawania tylko prawdziwych danych osobowych</h3><br>
+        <h3>2. zabronione jest nagrywanie całości lub fragmentów debat organizowanych w ramach platformy zadebatuj.pl
+            przez
+            osoby inne niż sędziowie</h3><br>
+        <h3>3. Użytkownik, który deklaruje chęć wzięcia udziału w debacie w danym terminie, jest zobowiązany do
+            poinformowania organizatorów najpóźniej 24 godziny przed startem debaty o ewentualnej niedyspozycji lub
+            problemach z udziałem w wydarzeniu.</h3><br>
+        <p>Informujemy, że Administratorem Państwa danych osobowych jest Krakowskie Stowarzyszenie Mówców z siedzibą w
+            Krakowie przy ul. Nawojki 6/150, 30-072; KRS: 0000607741 (dalej: Administrator). Zakres zbieranych danych
+            osobowych: Dane osobowe zbierane przez Administratora to imię i nazwisko, dane kontaktowe (adres e-mail).
+            Cel i
+            podstawa prawna przetwarzania danych osobowych: Państwa dane osobowe zawarte w niniejszym formularzu będą
+            przetwarzane na podstawie zgody, o której mowa w art. 6 ust. 1 lit. a) Rozporządzenia Parlamentu
+            Europejskiego i
+            Rady (UE) 2016/679 (dalej: Rozporządzenie), w celu uwzględnienia Państwa osoby w procesie organizacji i
+            przeprowadzania i dokumentacji debat online. Macie Państwo prawo dostępu do treści swoich danych osobowych
+            oraz
+            otrzymania kopii tych danych, a także prawo żądania ich poprawiania, usunięcia, ograniczenia przetwarzania,
+            wniesienia sprzeciwu wobec przetwarzania, jak również przenoszenia danych. Realizacja żądania usunięcia
+            danych
+            jest równoznaczne z rezygnacją z udziału w procesie organizacji, przeprowadzania i dokumentacji debat. W
+            przypadku chęci realizacji powyższych praw, prosimy o kontakt drogą elektroniczną na adres e-mail
+            kontakt@ksmowcow.pl Jednocześnie informujemy, że przysługuje Państwu prawo wniesienia skargi do Prezesa
+            Urzędu
+            Ochrony Danych Osobowych (PUODO) z siedzibą w Warszawie, ul. Stawki 2.</p>
+    </div>
+</section>
+<footer class="main-footer">
+    <div class="footer-content">
+        <ul class="links">
+            <li class="link">
+                <a href="">
+                    <i class="fa fa-youtube-square fa-2x"></i>
+                </a>
+            </li>
+            <li class="link">
+                <a href="">
+                    <i class="fa fa-facebook-square fa-2x"></i>
+                </a>
+            </li>
+            <li class="link">
+                <i class="fa fa-phone"></i>
+            </li>
+            <li class="link">
+                <i class="fa fa-envelope-o"></i>
+            </li>
+        </ul>
+    </div>
+    <div class="copyright">
+        <p>&copy; Kacper Łęczyński, Strona Zadebatuj.pl jest
+            własnością Krakowskiego Stowarzyszenia Mówców</p>
+    </div>
+</footer>
+<script src="{% static '/js/app.js' %}"></script>
+</body>
+</html>

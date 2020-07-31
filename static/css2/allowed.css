@@ -1,0 +1,13 @@
+form{
+    width: 50%!important;
+}
+form .form{
+    width: 100% !important;
+}
+
+
+@media screen and (max-width: 320px){
+    .registration h1{
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,72 @@
+body{
+    background: none;
+}
+header{
+    background-color: #222222;
+}
+.register-main{
+    display: grid;
+    height: 100vh;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    //grid-template-rows: repeat(1, 1fr);
+}
+.register{
+    background-image: url("/static/img2/second.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+//background-attachment: fixed;
+    background-size: cover;
+}
+.register .debatant, .register-two .judges{
+    margin: auto;
+    width: 50%;
+    padding-top: 45%;
+    text-align: center;
+}
+.register .debatant h1 a, .register-two .judges h1 a{
+    text-decoration: none;
+    color: white;
+}
+.register .debatant h1, .register-two .judges h1{
+    background-color: rgba(0,0,0, 0.5);
+}
+.register-two{
+    background-image: url("/static/img2/sixth.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+//background-attachment: fixed;
+    background-size: cover;
+}
+
+.register .debatant h1:before:hover{
+    animation: jump 1s forwards;
+}
+@keyframes jump {
+    0%{transform: translateY(-20px)}
+    100%{transform: translateY(0px)}
+}
+.register .debatant h1 a:hover:before{
+    content: '\f061';
+    font-family: FontAwesome;
+    color: white;
+}
+.register-two .judges h1 a:hover:before{
+    content: '\f061';
+    font-family: FontAwesome;
+    color: white;
+}
+@media screen and (max-width: 860px){
+    .register-main{
+        display: flex;
+        flex-direction: column;
+    }
+    .register .debatant, .register-two .judges{
+        padding-bottom: 50%;
+    }
+}
+@media screen and (max-width: 320px){
+    .register .debatant h1 a, .register-two .judges h1 a{
+        font-size: 20px;
+    }
+}

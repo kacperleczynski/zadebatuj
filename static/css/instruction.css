@@ -1,0 +1,207 @@
+.instruction-main{
+    background-color: #444444;
+    min-height: 100vh;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    padding-top: 10vh;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.instruction-main h1{
+    background-color: rgba(5,5,5,0.3);
+    animation: drop2 1.5s ease;
+}
+.instruction-main .cards {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+.instruction-main .cards .card{
+    height: 300px;
+    width: 300px;
+    background-color: #21c7f1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-around;
+    border-radius: 10px;
+    overflow: hidden;
+    animation: drop 1.5s ease;
+}
+.instruction-main .cards .card:hover{
+    transition: background-color 0.5s ease-in-out;
+    background-color: #078eb1;
+    color: white;
+}
+.instruction-main .cards .card h2 a{
+    font-size: 24px;
+    text-decoration: none;
+    color: white;
+}
+.instruction-main .cards .card h2 a:hover:before{
+    content: '\f061';
+    font-family: FontAwesome;
+    color: white;
+}
+.instruction{
+    height: 900vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+@keyframes drop {
+    0%{transform: translateX(-40px); opacity: 0}
+    100%{transform: translateX(0px); opacity: 1}
+}
+@keyframes drop2 {
+    0%{transform: translateY(-20px); opacity: 0}
+    100%{transform: translateY(0px); opacity: 1}
+}
+.instruction-text, .instruction-text-two{
+    flex-direction: column;
+    width: 100%;
+    margin-right: auto;
+    background-color: #21c7f1;
+    font-size: 50px;
+    text-align: center;
+    opacity: 1;
+    color: white;
+    margin-top: 20px;
+}
+.instruction-content h3, .instruction-content-two h3{
+    padding-top: 5px;
+    color: #444444;
+}
+.instruction-content, .instruction-content-two{
+    width: 80%;
+    margin: auto;
+    opacity: 1;
+}
+
+.instruction-link{
+    color: black;
+    font-size: 26px;
+    //background-color: white;
+}
+.modal-button{
+    background-color: #959494;
+    height: 40px;
+    width: 140px;
+    color: #222222;
+    margin-bottom: 20px;
+    border: 1px solid #5c5b5b;
+    cursor: pointer;
+}
+.modal-button:hover{
+    background-color: #444444;
+    color: white;
+    transition: background-color, color 0.5s ease-in-out;
+}
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: white;
+    width: 500px;
+    max-height: 80%;
+}
+.modal.active{
+    transform: translate(-50%, -50%) scale(1);
+}
+.modal-header{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-header .close-button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.55rem;
+    font-weight: bold;
+
+}
+.modal-header .title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+.modal-body img{
+    width: 500px;
+}
+#overlay{
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0, 0.5);
+    pointer-events: none;
+}
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+.instruction-content-two ul{
+    list-style: none;
+    text-align: start;
+    margin-left: 10px;
+}
+.instruction-content-two h3 a, .instruction-content h3 a{
+    font-size: 20px;
+    text-decoration: none;
+    color: #5c5b5b;
+}
+.instruction-content h3 .card{
+    color: #21c7f1;
+}
+
+.instruction-content-two h3 a:hover:before, .instruction-content h3 a:hover:before{
+    content: '\f061';
+    font-family: FontAwesome;
+    color: #222222;
+}
+.instruction-content-two h3 a:hover, .instruction-content h3 a:hover{
+    color: #222222;
+}
+#popupBoxOnePosition{
+    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+    background-color: rgba(0,0,0,0.7); display: none;
+}
+#popupBoxTwoPosition{
+    top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+    background-color: rgba(0,0,0,0.7); display: none;
+}
+.popupBoxWrapper{
+    width: 700px; margin: 50px auto; text-align: left;
+}
+.popupBoxContent{
+    background-color: #FFF; padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.popupBoxContent img{
+    width: 500px;
+    height: 500px;
+}
+.popupBoxContent button{
+    background-color: #5c5b5b;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    color: white;
+}

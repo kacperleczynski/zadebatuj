@@ -1,0 +1,213 @@
+/* Responsive */
+
+@media screen and (max-width: 1200px){
+    .logo img{
+        height: 8vh;
+        max-width: 500px;
+    }
+    .nav{
+        flex: 2;
+    }
+    .nav-link a{
+        font-size: 20px;
+    }
+    .logo{
+        flex: 1;
+    }
+    .sec-container{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    .presentation{
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    .grid-info-first h1, .grid-info-second h1, .grid-info-third h1{
+        font-size: 20px;
+    }
+    .contact h1, .footer-media h1{
+        font-size: 25px;
+    }
+    .link i{
+        font-size: 25px !important;
+    }
+
+
+}
+@media screen and (max-width: 860px){
+    .intro-text h1{
+        font-size: 35px;
+    }
+    .cta button{
+        font-size: 12px;
+        height: 50px;
+    }
+    .logo img{
+        margin-top: 1%;
+    }
+    .sec-container{
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-columns: repeat(3,1fr);
+    }
+    .presentation{
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+    .line{
+        height: 3px;
+        width: 30px;
+        background: #ffffff;
+        margin: 5px;
+    }
+    .hamburger{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+    }
+    header{
+        position: fixed;
+        display: block;
+    }
+    .nav-links{
+        position: fixed;
+        background: #222222;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        clip-path: circle(0px at 90% -10px);
+        transition: all 1s ease-out;
+        margin-top: -200px;
+    }
+    .nav-links.open{
+        clip-path: circle(1400px at 90% -10px);
+        height: 130vh;
+        width: 100vw;
+        margin-top: -200px;
+    }
+    .nav-link{
+        padding: 50px;
+    }
+    .image-grid{
+        display: flex;
+        flex-direction: column;
+    }
+    .first-image, .second-image{
+        height: 33vh;
+        background-position: center;
+    }
+    .third-image{
+        height: 34vh;
+        background-position: center;
+    }
+
+    .grid-info-first, .grid-info-second, .grid-info-third{
+        font-size: 10px;
+    }
+    .link i{
+        font-size: 30px !important;
+    }
+    .contact h1, .footer-media h1{
+        font-size: 25px;
+    }
+
+}
+@media screen and (max-width: 620px){
+    .intro-text h1{
+        font-size: 28px;
+    }
+    .cta button{
+        font-size: 12px;
+        height: 40px;
+        width: 100px;
+    }
+    .main-footer{
+        bottom: 5%;
+    }
+    .link i{
+        font-size: 25px !important;
+    }
+    .footer-media h1{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    .main-footer{
+        bottom: 5%;
+    }
+    .copyright{
+        height: 5vh;
+    }
+    .link{
+        padding: 1.8%;
+    }
+    .copyright{
+        padding: 5%
+    }
+}
+@media screen and (max-width: 380px){
+    header{
+        width: 100%;
+    }
+    .sec-container{
+        width: 90%;
+        margin: auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3,1fr);
+    }
+    .sec-container .presentation .introduction .intro-text h1{
+        font-size: 26px;
+    }
+    .cta button{
+        height: 40px;
+        width: 80px;
+        font-size: 10px;
+    }
+    .image-grid{
+        display: flex;
+        flex-direction: column;
+    }
+    .first-image{
+        height: 33vh;
+    }
+    .second-image{
+        height: 33vh;
+    }
+    .third-image{
+        height: 34vh;
+    }
+    .grid-info-first, .grid-info-second, .grid-info-third{
+        font-size: 10px;
+    }
+    .link i{
+        font-size: 20px !important;
+    }
+    .copyright p{
+        font-size: 8px;
+    }
+}
+@media screen and (max-width: 325px){
+    .intro-text h1{
+        font-size: 1px;
+    }
+    .grid-info-first h1, .grid-info-second h1, .grid-info-third h1{
+        font-size: 15px;
+    }
+    .main-footer{
+        bottom: 5%;
+    }
+    .footer-content .links .link i{
+        font-size: 25px !important;
+    }
+    .footer-content .links .link{
+        padding: 5%;
+    }
+    .copyright p{
+        font-size: 7px;
+    }
+}
