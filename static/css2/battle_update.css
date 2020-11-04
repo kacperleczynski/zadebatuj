@@ -1,0 +1,91 @@
+header {
+    z-index: 2;
+    background-color: #222222;
+}
+
+body {
+    background: none;
+}
+
+.battle-section {
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.battle-section h1 {
+    font-size: 60px;
+}
+
+form h3, h4, p {
+    padding: 10px;
+}
+
+.debatants-box {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+}
+
+.battle-button {
+    background: #888888;
+    padding: 10px 10px;
+    color: black;
+    border: 1px solid black;
+}
+
+.battle-button:hover {
+    background: #222222;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 860px) {
+    .battle-section h1 {
+        font-size: 45px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .battle-section {
+        width: 60%;
+        padding-top: 15vh;
+        padding-bottom: 5vh;
+        margin: auto;
+    }
+
+    .debatants-box {
+        width: 100%;
+
+    }
+
+    form h3, h4, p {
+        padding: 5px;
+        font-size: 14px;
+    }
+    .battle-button{
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 375px){
+    .battle-section{
+        height: auto;
+    }
+    .battle-section h1{
+        font-size: 30px;
+    }
+    .debatants-box{
+        flex-direction: column;
+    }
+    form h3, h4, p{
+        font-size: 12px;
+    }
+}

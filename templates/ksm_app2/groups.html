@@ -1,0 +1,160 @@
+{% load static %}
+{% load has_group %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krakowskieg Stowarzyszenie Mówców</title>
+    <link rel="stylesheet" href="{% static '/css2/event.css' %}" />
+    <link rel="stylesheet" href="{% static '/css2/content.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{% static '/img2/KSM_logo_poziom_biel-kopia.png' %}" alt="" />
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'ksm_app:base' %}">Sekcje</a>
+        </li>
+        <li>
+          <a href="{% url 'ksm_app:event' %}">Turnieje</a>
+        </li>
+          {% if user.is_authenticated %}
+            {% if request.user|has_group:'judges' %}
+        <li>
+          <a href="{% url 'ksm_app:judges_profile' %}">{{ user.username }}</a>
+        </li>
+          {% else %}
+          <li>
+              <a href="{% url 'ksm_app:debatants_profile' %}">{{ user.username }}</a>
+          </li>
+          {% endif %}
+          {% else %}
+          <li>
+              <a href="{% url 'ksm_app:choose' %}">Zarejestruj</a>
+          </li>
+          <li>
+              <a href="{% url 'ksm_app:user_login' %}">Zaloguj</a>
+          </li>
+          {% endif %}
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+    <main class="content-container">
+        <div class="content-tournament">
+    <h2>Nazwa grupy: <span style="color: #666666">{{ tournament_groups.group_name }}</span></h2>
+        <h2>Nazwa turnieju: <span style="color: #666666">{{ tournament_groups.tournament_name }}</span></h2>
+            </div>
+        <div class="content-creator2">
+            <h2><a class="enter-button" href="{% url 'ksm_app:tournament' tournament.id %}">Wejdź do turnieju</a></h2>
+        </div>
+
+    </main>
+    <article class="content-description">
+    <div class="user-group">
+        <h2>Lista uczestników</h2>
+        {% for user in users %}
+        <p style="color: #666666">{{ user.user_first_name }} {{ user.user_last_name }}</p>
+        {% endfor %}
+    </div>
+        <div class="judges_group">
+        <h2>Lista sędziów</h2>
+        {% for judge in judges %}
+        <p style="color: #666666">{{ judge.judges_name }} {{ judge.judges_last }}</p>
+        {% endfor %}
+        </div>
+          {% if user.is_authenticated %}
+              {% if request.user|has_group:'judges' %}
+                  <div class="content-presentation">
+                  <h2>Zapisz się jako sędzia</h2>
+          <form method="post">
+              {% csrf_token %}
+              <label for="name">Imię</label>
+              {{ form2.judges_name }}
+              <br>
+              <label for="last_name">Nazwisko</label>
+              {{ form2.judges_last }}
+              <br>
+              <label for="tournament">Wybierz turniej</label>
+              {{ form2.user_tournament }}
+              <br>
+              <label for="tournament">Wybierz druzyne</label>
+              {{ form2.user_group }}
+              <br>
+              <button type="submit">Zapisz się</button>
+          </form>
+      </div>
+                  {% else %}
+        <div class="content-presentation">
+                  <h2>Zapisz się jako uczestnik</h2>
+          <form method="post">
+              {% csrf_token %}
+              <label for="name">Imię</label>
+              {{ form.user_first_name }}
+              <br>
+              <label for="last_name">Nazwisko</label>
+              {{ form.user_last_name }}
+              <br>
+              <label for="tournament">Wybierz turniej</label>
+              {{ form.user_tournament }}
+              <br>
+              <label for="tournament">Wybierz druzyne</label>
+              {{ form.user_group }}
+              <br>
+              <button type="submit">Zapisz się</button>
+          </form>
+        </div>
+              {% endif %}
+    {% else %}
+    <h2>Zaloguj się żeby się zapisać:<a href="{% url 'ksm_app:user_login' %}">Zaloguj</a>
+        {% endif %}
+</h2>
+    </article>
+    <footer>
+      <ul>
+        <li class="link">
+          <a
+            href="https://www.youtube.com/channel/UCd2KIvR-DMDGMT_ce2gJzAw"
+            target="_blank"
+          >
+            <i class="fa fa-youtube-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="link">
+          <a href="https://www.facebook.com/ksmowcow/" target="_blank">
+            <i class="fa fa-facebook-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="link">
+          <a href="{% url 'ksm_app:phone' %}">
+            <i class="fa fa-phone"></i>
+          </a>
+        </li>
+        <li class="link">
+          <a href="mailto:ksmowcow@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </li>
+      </ul>
+      <p>
+        &copy; Kacper Łęczyński, Strona Zadebatuj.pl jest własnością
+        Krakowskiego Stowarzyszenia Mówców
+      </p>
+    </footer>
+    <script src="{% static '/js/event.js' %}"></script>
+  </body>
+</html>

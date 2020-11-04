@@ -1,0 +1,135 @@
+.content-container {
+  height: 30vh;
+  padding-top: 15vh;
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-bottom: 1px solid #666666;
+  animation: 1s drop ease-in-out;
+}
+.content-container .content-date .date-phar {
+  color: #666666;
+  font-size: 26px;
+}
+.content-container .content-info p,
+.content-container .content-create p {
+  color: #666666;
+  font-size: 26px;
+}
+.content-description {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 30px;
+  animation: 1s drop ease-in-out;
+}
+.content-description .content {
+  width: 85%;
+  margin: auto;
+  height: 50vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content-description .content .btn{
+  width: 85%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.content-description .content h1 {
+  font-size: 40px;
+  padding: 20px;
+  text-align: center;
+}
+.content-description .content a {
+  color: #ffffff;
+  padding: 40px;
+  font-size: 20px;
+  border-radius: 10px;
+  background-color: #cb6363;
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.content-description .content a:hover{
+  background-color: #c21818;
+  box-shadow: 0 0 20px rgba(33, 33, 33, 0.2);
+
+  transition: all 0.5s ease-in-out;
+}
+.content-description .content-presentation {
+  width: 34%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content-description .content-presentation form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-self: center;
+}
+.content-description .user-group{
+  width: 50%;
+  height: 50vh;
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.content-description .content-presentation form input{
+  width: 200px;
+  border: 1px solid black;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+.content-presentation button {
+  height: 40px;
+  width: 120px;
+  background-color: #999999;
+  color: #333333;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+}
+.content-presentation button:hover {
+  background-color: #333333;
+  color: white;
+  transition: all 0.5s ease-in-out;
+}
+.content-description .content-users {
+  width: 33%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+.content-description .content-users p {
+  color: #666666 !important;
+}
+.content-description .content-users p .user-group{
+  color: black;
+}
+
+@keyframes drop {
+  0%{opacity: 0; transform: translateX(-200px)}
+  100%{opacity: 1; transform: translateX(0)}
+}
+@keyframes drop2 {
+  0%{opacity: 0; transform: translateY(-200px)}
+  100%{opacity: 1; transform: translateY(0)}
+}

@@ -1,0 +1,41 @@
+
+.battle-section{
+    justify-content: center;
+}
+
+.cta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: auto 10px;
+}
+.battle-update form a, .battle-button{
+    background: #888888;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    width: 86px;
+    height: 42px;
+}
+.battle-update form a{
+    padding-top: 8px;
+}
+.battle-update form a:hover{
+    background-color: #222222;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+
+@media screen and (max-width: 375px){
+    .battle-section{
+        height: 90vh!important;
+    }
+    .cta{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .cta button{
+        margin-bottom: 10px;
+    }
+}

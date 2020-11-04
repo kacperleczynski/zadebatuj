@@ -1,0 +1,117 @@
+{% load static %}
+{% load has_group %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Krakowskieg Stowarzyszenie Mówców</title>
+    <link rel="stylesheet" href="{% static '/css2/event.css' %}" />
+    <link rel="stylesheet" href="{% static '/css2/content.css' %}" />
+      <link rel="stylesheet" href="{% static 'css2/tournament.css' %}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="logo">
+        <img src="{% static '/img2/KSM_logo_poziom_biel-kopia.png' %}" alt="" />
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'ksm_app:base' %}">Sekcje</a>
+        </li>
+        <li>
+          <a href="{% url 'ksm_app:event' %}">Turnieje</a>
+        </li>
+          {% if user.is_authenticated %}
+            {% if request.user|has_group:'judges' %}
+        <li>
+          <a href="{% url 'ksm_app:judges_profile' %}">{{ user.username }}</a>
+        </li>
+          {% else %}
+          <li>
+              <a href="{% url 'ksm_app:debatants_profile' %}">{{ user.username }}</a>
+          </li>
+          {% endif %}
+          {% else %}
+          <li>
+              <a href="{% url 'ksm_app:choose' %}">Zarejestruj</a>
+          </li>
+          <li>
+              <a href="{% url 'ksm_app:user_login' %}">Zaloguj</a>
+          </li>
+          {% endif %}
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+    <main class="content-container">
+        <div class="tournament-presentation">
+            <h2>Nazwa turnieju: <span style="color: #5a6268">{{ event.tournament_name }}</span></h2>
+            <h2>Data: <span style="color: #5a6268">{{ event.data }}</span></h2>
+            <h2>Twórca: <span style="color: #5a6268">{{ event.tournament_creator }}</span></h2>
+        </div>
+        <div class="tournament-content">
+            <button class="harmo">Harmonogram</button>
+            <div class="modal-bg">
+                <div class="modal">
+                    <h2>Harmonogram</h2>
+                    <img class="harmo-img" src="{{ event.timetable_photo|default_if_none:'#' }}" alt="harmonogram pojawi się wkrótce">
+                    <span class="modal-close">&times;</span>
+                </div>
+            </div>
+            <h2><a href="#">Tabela wyników</a></h2>
+        </div>
+        {% if event.zoom %}
+        <div>
+            <h2><a href="{{ event.zoom }}" target="_blank">Zoom</a></h2>
+            {% else %}
+            <h2>Link do zooma pojawi się wkrótcę</h2>
+        </div>
+        {% endif %}
+    </main>
+    <footer>
+      <ul>
+        <li class="link">
+          <a
+            href="https://www.youtube.com/channel/UCd2KIvR-DMDGMT_ce2gJzAw"
+            target="_blank"
+          >
+            <i class="fa fa-youtube-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="link">
+          <a href="https://www.facebook.com/ksmowcow/" target="_blank">
+            <i class="fa fa-facebook-square fa-2x"></i>
+          </a>
+        </li>
+        <li class="link">
+          <a href="{% url 'ksm_app:phone' %}">
+            <i class="fa fa-phone"></i>
+          </a>
+        </li>
+        <li class="link">
+          <a href="mailto:ksmowcow@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+        </li>
+      </ul>
+      <p>
+        &copy; Kacper Łęczyński, Strona Zadebatuj.pl jest własnością
+        Krakowskiego Stowarzyszenia Mówców
+      </p>
+    </footer>
+    <script src="{% static '/js/event.js' %}"></script>
+    <script src="{% static '/js/app2.js' %}"></script>
+  </body>
+</html>

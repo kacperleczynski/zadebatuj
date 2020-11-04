@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body h1{
+    text-align: center;
+    color: white;
+    font-size: 70px;
+    text-shadow: 2px 2px black;
+}
+.container{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+
+}
+.container .column{
+    width: 33%;
+    height: 100%;
+    float: left;
+    border-right: 2px solid rgba(0,0,0,.5);
+    box-sizing: border-box;
+    z-index: 1;
+}
+.container .column3{
+    width: 34%;
+}
+.container .column:last-child{
+    border-right: none;
+}
+.container .column .content{
+    position: relative;
+    height: 100%;
+}
+.container .column .content h1{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    background: rgba(0,0,0,.1);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 50px;
+    border-top: 2px solid rgba(0,0,0,.5);
+    border-bottom: 2px solid rgba(0,0,0,.5);
+}
+.container .column .content .box{
+    position: absolute;
+    top: 50%;
+    transform: translateY(100%);
+    box-sizing: border-box;
+    padding: 40px;
+    background: rgba(255,255,255,1);
+    text-align: center;
+    transition: 0.5s;
+    opacity: 0;
+    min-width: 100%;
+}
+.container .column.active .content .box{
+    border: 1px solid #333333;
+    opacity: 1;
+    transform: translateY(-50%);
+}
+.container .column .content .box h2{
+    margin: 0;
+    padding: 20px;
+    font-size: 35px;
+    color: #262626;
+}
+.container .column .content .box p {
+    color: #262626;
+    font-size: 18px;
+}
+.container .column .content .box a{
+    text-decoration: none;
+    background: black;
+    padding: 15px 15px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+.container .column .content .box a:hover{
+    background: #444444;
+}
+.container .column .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+
+}
+.container .column.active .bg.bg1{
+    background-size: cover;
+    background: url("/static/img2/eighth (1).jpg") fixed center;
+    transition: 0.5s;
+
+}
+.container .column.active .bg.bg2{
+    background-size: cover;
+    background: url("/static/img2/sixth.jpg") fixed center;
+    transition: 0.5s;
+
+}.container .column.active .bg.bg3{
+     background-size: cover;
+     background: url("/static/img2/third.jpg") fixed center;
+     transition: 0.5s;
+
+ }
+
+@media screen and (max-width: 960px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container .column{
+        width: 100%;
+    }
+    .container .column .content h1{
+        position: absolute;
+    }
+    .container .column .content .box h2{
+        font-size: 16px;
+    }
+    .container .column .content .box p{
+        font-size: 14px;
+    }
+
+}
