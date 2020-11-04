@@ -1,4 +1,5 @@
 header{
+
     background-color: #222222;
     height: 10vh;
 }
@@ -33,6 +34,22 @@ body{
     text-decoration: none;
     border-bottom: 1px solid black;
     color: black;
+}
+.buttons{
+    margin-top: 20px;
+}
+.buttons a{
+    background-color: #999999;
+    color: white;
+    text-decoration: none;
+    padding: 5px 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.buttons a:hover{
+    background-color: #383d41;
+    color: white;
+    transition: all 0.5s ease-in-out;
 }
 @keyframes move {
     0%{transform: translateX(-300px);opacity: 0}

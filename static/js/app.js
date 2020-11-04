@@ -1,9 +1,15 @@
 const hamburger = document.querySelector('.hamburger')
 const navLinks = document.querySelector('.nav-links')
+const navLink = document.querySelector('.nav-link-user')
+const line = document.querySelector('.line')
+
 
 hamburger.addEventListener("click", () =>{
     navLinks.classList.toggle("open");
 })
+
+
+
 
 $(window).on("scroll", () =>{
     if($(window).scrollTop()){
@@ -13,6 +19,14 @@ $(window).on("scroll", () =>{
         $('header').removeClass('blue')
     }
 })
+$(window).on("scroll", () => {
+    if($(window).scrollTop()){
+        $(navLink).addClass('square')
+    }else{
+        $(navLink).removeClass('square')
+    }
+})
+
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
@@ -62,3 +76,5 @@ document.getElementById('box1').addEventListener('click', function(){
 close.onclick = function() {
     e.style.display = "none";
 }
+
+

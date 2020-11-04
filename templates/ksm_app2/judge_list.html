@@ -39,7 +39,7 @@
                     <li class="nav-link"><a href="{% url 'ksm_app:clock' %}">Zegar</a></li>
                 {% endif %}
                 {% if request.user|has_group:'judges' %}
-                    <li class="nav-link"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
+                    <li class="nav-link-user"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
                 {% else %}
                     <li class="nav-link-user"><a href="{% url 'ksm_app:debatants_profile' %}"> {{ user.username }}</a>
                     </li>
@@ -68,6 +68,10 @@
     <a class="iframe-calendar"
        href="https://calendar.google.com/calendar/embed?src=ksmowcow.pl_nops1c9klcp7eom2jatvo5bicg%40group.calendar.google.com&ctz=Europe%2FWarsaw"
        target="_blank">Kalendarz</a>
+    <form method="get">
+        {{ myFilter.form }}
+        <button type="submit">Szukaj</button>
+    </form>
     <div class="debatants-form">
         {% for judge in judges %}
             <a href="{% url 'ksm_app:detail' judge.id %}">{{ judge.imię }} {{ judge.nazwisko }}</a>

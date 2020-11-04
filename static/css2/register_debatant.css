@@ -183,6 +183,9 @@ form .button-submit {
 }
 
 @media screen and (max-width: 520px) {
+    form{
+        width: 80% !important;
+    }
     .registration h1 {
         font-size: 22px;
     }

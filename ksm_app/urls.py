@@ -6,7 +6,8 @@ from django.conf import settings
 app_name = 'ksm_app'
 
 urlpatterns = [
-    path('', views.base, name='base'),
+    path('', views.index, name='base'),
+    path('base/', views.base, name="main"),
     path('choose_register/', views.ChooseRegister, name='choose'),
     path('debatants_register/', views.DebatantsRegister, name='debatants'),
     path('judges_register/', views.JudgesRegister, name='judges'),
@@ -26,9 +27,15 @@ urlpatterns = [
     path('judges_update/', views.edit_judges_profile, name='judges_update'),
     path('debatants_update/', views.edit_debatants_profile, name='debatants_update'),
     path('instruction/', views.instruction, name='instruction'),
-    path('clock/', views.index, name='clock'),
-    path('about/', views.about, name='about')
-
+    path('clock/', views.clock, name='clock'),
+    path('about/', views.about, name='about'),
+    path('event/', views.event, name='event'),
+    path('content/<int:pk>', views.content, name='content'),
+    path('groups/<int:pk>', views.groups, name='groups'),
+    # path('allowed2/<int:pk>', views.group_auth, name='allowed2')
+    path('tournament/<int:pk>', views.tournament, name="tournament")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

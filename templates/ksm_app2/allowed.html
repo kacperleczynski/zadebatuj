@@ -39,7 +39,7 @@
                     <li class="nav-link"><a href="{% url 'ksm_app:clock' %}">Zegar</a></li>
                 {% endif %}
                 {% if request.user|has_group:'judges' %}
-                    <li class="nav-link"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
+                    <li class="nav-link-user"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
                 {% else %}
                     <li class="nav-link-user"><a href="{% url 'ksm_app:debatants_profile' %}"> {{ user.username }}</a>
                     </li>
@@ -61,9 +61,9 @@
                 <span class="content-name">Kod zabezpieczający</span>
             </label>
         </div>
+        <button class="button-submit" type="submit">Zatwierdź</button>
     </form>
 
-    <button class="button-submit" type="submit">Zatwierdź</button>
 
 </main>
 <footer class="main-footer">

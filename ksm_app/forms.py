@@ -1,7 +1,9 @@
 from django.forms import ModelForm
-from ksm_app.models import Debatants, Judges, DebatantsBattle, PasswordJudges
+from ksm_app.models import Debatants, Judges, DebatantsBattle, \
+    PasswordJudges, TournamentUsers, TournamentGroup, Tournament, TournamentJudges
 from django import forms
 from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from django import forms
 from django.conf import settings
 from django.contrib import auth
@@ -98,3 +100,21 @@ class DebatantsForm(forms.ModelForm):
         model = Debatants
         fields = ['imię', 'nazwisko', 'email', 'miasto', 'szkoła', 'organizacja',
                   'facebook', 'opis', 'terminy']
+
+
+# class TournamentPassword(forms.ModelForm):
+#     class Meta:
+#         model = TournamentGroup
+#         fields = ['group_password']
+
+
+class TournamentUsersForm(forms.ModelForm):
+    class Meta:
+        model = TournamentUsers
+        fields = ['user_last_name', 'user_first_name', 'user_tournament', 'user_group']
+
+
+class TournamentJudgesForm(forms.ModelForm):
+    class Meta:
+        model = TournamentJudges
+        fields = ['judges_name', 'judges_last', 'user_tournament', 'user_group']

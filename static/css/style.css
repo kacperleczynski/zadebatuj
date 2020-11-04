@@ -80,7 +80,17 @@ nav {
     font-family: fontAwesome;
 
 }
-
+.nav-link-user.square{
+    background-color: white;
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 1s ease-in-out;
+}
+.nav-link-user.square a{
+    color: black;
+}
 .nav-link {
     position: relative;
 }
@@ -88,6 +98,7 @@ nav {
 .nav-link a:hover {
     border-bottom: 1px solid white;
 }
+
 
 .sec-container {
     height: 100vh;

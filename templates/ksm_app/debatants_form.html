@@ -21,6 +21,7 @@
       <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
+          {{ form.terminy }}
         <button type="submit" class="btn btn-info">Zatwierdź</button>
       </form>
     </div>

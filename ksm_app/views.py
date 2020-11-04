@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from ksm_app.forms import (DebatantsProfileInfo, JudgesProfileInfo, UserForm,
                            JudgesForm, DebatantsBattleForm,
                            TransmisionBattle, JudgesPassword,
-                           DebatantsForm, )
-from ksm_app.models import Debatants, Judges, DebatantsBattle, PasswordJudges
+                           DebatantsForm, TournamentUsersForm, TournamentJudgesForm)
+from ksm_app.models import Debatants, Judges, DebatantsBattle, PasswordJudges, Tournament, TournamentUsers, \
+    TournamentGroup, TournamentJudges
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseRedirect, HttpResponse
@@ -14,10 +15,63 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django import template
 from django.utils.translation import gettext as _
+from .filters import FullNameJudgesFilter, FullNameDebatantsFilter
 
 
 # Create your views here.
 def index(request):
+    return render(request, 'ksm_app2/index.html')
+
+
+def groups(request, pk):
+    tournament_groups = get_object_or_404(TournamentGroup, pk=pk)
+    users = TournamentUsers.objects.filter(user_group=tournament_groups)
+    judges = TournamentJudges.objects.filter(user_group=tournament_groups)
+    tournament = Tournament.objects.get(tournament_name=tournament_groups.tournament_name)
+    form = TournamentUsersForm(
+        initial={'user_tournament': tournament_groups.tournament_name, 'user_group': tournament_groups})
+    form2 = TournamentJudgesForm(initial={'user_tournament': tournament_groups.tournament_name,
+                                          'user_group': tournament_groups})
+    if request.method == "POST":
+        form = TournamentUsersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form = TournamentUsersForm()
+
+    if request.method == "POST":
+        form2 = TournamentJudgesForm(request.POST)
+        if form2.is_valid():
+            form2.save()
+            form2 = TournamentJudgesForm()
+
+    context = {'tournament_groups': tournament_groups,
+               'users': users,
+               'form': form, 'judges': judges,
+               'form2': form2, "tournament": tournament}
+    return render(request, 'ksm_app2/groups.html', context)
+
+
+def tournament(request, pk):
+    event = get_object_or_404(Tournament, pk=pk)
+
+    return render(request, 'ksm_app2/tournament.html', {'event': event})
+
+
+def content(request, pk):
+    tournament = get_object_or_404(Tournament, pk=pk)
+    tournament_groups = TournamentGroup.objects.filter(tournament_name=tournament)
+    users = TournamentUsers.objects.filter(user_tournament=tournament)
+
+    return render(request, 'ksm_app2/content.html', {'tournament': tournament, 'users': users,
+                                                     'tournament_groups': tournament_groups})
+
+
+def event(request):
+    tournaments = Tournament.objects.all()
+    return render(request, 'ksm_app2/event.html', {'tournaments': tournaments})
+
+
+def clock(request):
     return render(request, 'ksm_app/index.html')
 
 
@@ -122,7 +176,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return redirect('ksm_app:base')
+                return redirect('ksm_app:base', )
 
             else:
                 return HttpResponse("Konto nie aktywne")
@@ -133,12 +187,14 @@ def user_login(request):
             return HttpResponse('nie właściwe dane do logowania')
 
     else:
-        return render(request, 'ksm_app2/login.html', {})
+        return render(request, 'ksm_app2/login.html')
 
 
 def judges_list(request):
     judges = Judges.objects.all()
-    return render(request, 'ksm_app2/judge_list.html', {'judges': judges})
+    myFilter = FullNameJudgesFilter(request.GET, queryset=judges)
+    judges = myFilter.qs
+    return render(request, 'ksm_app2/judge_list.html', {'judges': judges, 'myFilter': myFilter})
 
 
 def judges_detail(request, pk):
@@ -148,7 +204,9 @@ def judges_detail(request, pk):
 
 def debatants_list(request):
     debatants = Debatants.objects.all()
-    return render(request, 'ksm_app2/debatants_list.html', {'debatants': debatants})
+    myFilter = FullNameDebatantsFilter(request.GET, queryset=debatants)
+    debatants = myFilter.qs
+    return render(request, 'ksm_app2/debatants_list.html', {'debatants': debatants, 'myFilter': myFilter})
 
 
 def debatants_detail(request, pk):
@@ -179,7 +237,7 @@ def createBattle(request):
             return redirect('ksm_app:live')
 
     context = {'form': form}
-    return render(request, 'ksm_app/battle_form.html', context)
+    return render(request, 'ksm_app2/battle_create.html', context)
 
 
 @allowed_users(allowed_roles=['judges'])
@@ -194,7 +252,7 @@ def updateBattle(request, pk):
             return redirect('ksm_app:live')
 
     context = {'form': form}
-    return render(request, 'ksm_app/battle_form.html', context)
+    return render(request, 'ksm_app2/battle_update.html', context)
 
 
 @allowed_users(allowed_roles=['judges'])
@@ -205,7 +263,7 @@ def deleteBattle(request, pk):
         return redirect('ksm_app:live')
 
     context = {'item': battle}
-    return render(request, 'ksm_app/delete.html', context)
+    return render(request, 'ksm_app2/battle_delete.html', context)
 
 
 def judgesAuth(request):
@@ -216,22 +274,41 @@ def judgesAuth(request):
         form = JudgesPassword(request.POST)
         if form.is_valid():
             haslo = form.cleaned_data['haslo']
+            print(haslo)
             if haslo == password:
                 return redirect('ksm_app:judges')
             else:
-                return HttpResponse('Hasło nie prawidłowe')
+                return HttpResponse('Hasło nieprawidłowe')
 
     return render(request, 'ksm_app2/allowed.html', {'form': form})
 
-    # User profile #
+
+# def group_auth(request, pk):
+#     model = get_object_or_404(TournamentGroup, pk=pk)
+#
+#     form = TournamentPassword()
+#     if request.method == "POST":
+#         form = TournamentPassword(request.POST)
+#         if form.is_valid():
+#             accept = form.cleaned_data['group_password']
+#             print(accept)
+#             if accept == model.group_password:
+#                 return redirect('ksm_app:groups')
+#             else:
+#                 return HttpResponse("hasło nieprawidłowe")
+#
+#
+#
+#     return render(request, 'ksm_app2/allowed2.html', {'form': form})
+# User profile #
 
 
 def debatantsProfilePage(request):
-    return render(request, 'ksm_app/debatants_profile.html')
+    return render(request, 'ksm_app2/deb_profile.html')
 
 
 def judgesProfilePage(request):
-    return render(request, 'ksm_app/judges_profile.html')
+    return render(request, 'ksm_app2/jud_profile.html')
 
 
 def edit_judges_profile(request):
@@ -245,7 +322,7 @@ def edit_judges_profile(request):
     else:
         form = JudgesForm(instance=request.user.judges)
         context = {'form': form}
-        return render(request, 'ksm_app/judges_form.html', context)
+        return render(request, 'ksm_app2/jud_update.html', context)
 
 
 def edit_debatants_profile(request):
@@ -259,4 +336,4 @@ def edit_debatants_profile(request):
     else:
         form = DebatantsForm(instance=request.user.debatants)
         context = {'form': form}
-        return render(request, 'ksm_app/debatants_form.html', context)
+        return render(request, 'ksm_app2/deb_update.html', context)

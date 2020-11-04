@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="{% static '/css/rwd.css' %}">
         <link rel="stylesheet" href="{% static '/css2/login.css' %}">
         <link rel="stylesheet" href="{% static '/css2/register_debatant.css' %}">
-
     {% endcompress %}
     <script
             src="https://code.jquery.com/jquery-3.5.1.min.js"
@@ -42,7 +41,7 @@
                     <li class="nav-link"><a href="{% url 'ksm_app:clock' %}">Zegar</a></li>
                 {% endif %}
                 {% if request.user|has_group:'judges' %}
-                    <li class="nav-link"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
+                    <li class="nav-link-user"><a href="{% url 'ksm_app:judges_profile' %}"> {{ user.username }}</a></li>
                 {% else %}
                     <li class="nav-link-user"><a href="{% url 'ksm_app:debatants_profile' %}"> {{ user.username }}</a>
                     </li>

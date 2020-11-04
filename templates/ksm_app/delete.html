@@ -1,34 +1,37 @@
 {% extends "ksm_app/base.html" %}
 {% block body_block %}
-<style media="screen">
-  #jumbotron1{
-    background-color: #212830;
-    color: white;
-  }
-  #central{
-    background-color: #5caad1;
-    color: white;
-    text-align: center;
-  }
-  h1{
-    font-size:80px;
-  }
-</style>
+    <style media="screen">
+        #jumbotron1 {
+            background-color: #212830;
+            color: white;
+        }
 
-<div id=central class="jumbotron">
-      <h1>Usuwanie debaty</h1>
-    <div class="container">
-      <div id=jumbotron1 class="jumbotron">
-        <h3>Czy chcesz usunąć debate {{item}}</h3>
-        <form  method="POST">
-          {% csrf_token %}
+        #central {
+            background-color: #5caad1;
+            color: white;
+            text-align: center;
+        }
 
-          <button type="submit" class="btn btn-outline-info">Zatwierdź</button>
-          <a class="btn btn-outline-info" href="{% url 'ksm_app:live' %}" role="button">Powrót</a>
-        </form>
-      </div>
+        h1 {
+            font-size: 80px;
+        }
+    </style>
+
+    <div id=central class="jumbotron">
+        <h1>Usuwanie debaty</h1>
+        <div class="container">
+            <div id=jumbotron1 class="jumbotron">
+                <h3>Czy chcesz usunąć debate {{ item }}</h3>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="cta">
+                        <button type="submit" class="btn btn-outline-info">Zatwierdź</button>
+                        <a class="btn btn-outline-info" href="{% url 'ksm_app:live' %}" role="button">Powrót</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-</div>
 
 
 {% endblock %}
